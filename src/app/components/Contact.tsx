@@ -73,6 +73,24 @@ export function Contact({ darkMode }: ContactProps) {
               <ContactDetail icon={<MapPin />} title="Address" detail="Malad West Mumbai 400 095" darkMode={darkMode} />
               <ContactDetail icon={<Clock />} title="Business Hours" detail="Mon - Sat: 10:00 AM - 6:00 PM" darkMode={darkMode} />
             </div>
+
+            {/* Integrated Map Placeholder */}
+            <div
+              className={`mt-8 rounded-xl overflow-hidden h-64 border ${
+                darkMode ? 'bg-gray-800 border-gray-700' : 'bg-gray-200 border-gray-300'
+              }`}
+            >
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3767.932119666259!2d72.80634147558875!3d19.198166948125174!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b6a16733ebc1%3A0x1a4306c5470940f8!2sMalwani%20Church%2C%20Chandradarshan%20Society%2C%20Chikuwadi%2C%20Malad%20West%2C%20Mumbai%2C%20Maharashtra%20400095!5e0!3m2!1sen!2sin!4v1775719939186!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0, filter: darkMode ? 'invert(90%) hue-rotate(180deg)' : 'none' }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Trishu Fire Enterprise Location"
+              />
+            </div>
           </motion.div>
 
           {/* Contact Form */}
@@ -82,14 +100,13 @@ export function Contact({ darkMode }: ContactProps) {
             viewport={{ once: true }}
             className={`p-8 rounded-xl ${darkMode ? 'bg-gray-800 border border-gray-700' : 'bg-white shadow-xl'}`}
           >
-            {/* 3. Use Formspree's handleSubmit */}
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="full-name" className={`block mb-2 font-medium ${darkMode ? 'text-white' : 'text-gray-900'}`}>Full Name</label>
                 <input
                   type="text"
                   id="full-name"
-                  name="name" // Important: Formspree uses the name attribute
+                  name="name"
                   required
                   className={inputClass(darkMode)}
                   placeholder="John Doe"
